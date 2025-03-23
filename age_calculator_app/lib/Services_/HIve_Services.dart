@@ -2,19 +2,23 @@ import 'package:age_calculator_app/Model_/age_model.dart';
 import 'package:hive/hive.dart';
 
 class HiveServices {
-  static const String boxName = 'AgeBox';
+  //The database name
+  static const String BoxName = 'BoxName';
 
+  //The function for hive database to initialize
   Future<void> init() async {
-    await Hive.openBox<AgeModel>(boxName);
+    await Hive.openBox<AgeModel>(BoxName);
   }
 
-  Future<void> Save_Age(AgeModel agemodel) async {
-    final box = await Hive.openBox<AgeModel>(boxName);
-    await box.put('Input Age', agemodel);
+  //The function for data to be stored in database
+  Future<void> Save_Age(AgeModel ageModel) async {
+    final box = await Hive.openBox<AgeModel>(BoxName);
+    box.put('Input data', ageModel);
   }
 
-  Future<AgeModel?> get_Age() async {
-    final box = await Hive.openBox<AgeModel>(boxName);
-    return box.get('Input Age');
+  //The function for data to be feteched from database
+  Future<AgeModel?> getAge() async {
+    final box = await Hive.openBox<AgeModel>(BoxName);
+    return box.get('Input data');
   }
 }

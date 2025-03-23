@@ -29,35 +29,24 @@ class AgeProvider with ChangeNotifier {
   }
 
   //Make Provider for home Screen View
-  final HiveServices _hiveServices = HiveServices();
+  HiveServices _hiveServices = HiveServices();
   AgeModel? _ageModel;
-  bool _isloading = true;
 
-  AgeModel? get ageModel => _ageModel;
-  bool get isloading => _isloading;
+  AgeModel? get agemodel => _ageModel;
 
-  //function for load data form hive
-  void AgeViewModel() {
-    load_Data();
-  }
-
-  //function for load
-  void load_Data() async {
-    _isloading = true;
-    notifyListeners();
-
-    _ageModel = await HiveServices().get_Age();
-    _isloading = false;
+  //function for load the data
+  void load_data() async {
+    _ageModel = await _hiveServices.getAge();
     notifyListeners();
   }
 
-  //function for set date of birth
-  void set_Date_of_birth(DateTime dob) async {
-    _ageModel = AgeModel(date_of_Birth: dob);
+  //function for Set the Date of birth
+  void set_date_of_Birth(DateTime Dob) async {
+    _ageModel = AgeModel(date_of_Birth: Dob);
     await _hiveServices.Save_Age(_ageModel!);
     notifyListeners();
   }
 
-  Map<String, int> get agedetail =>
-    _ageModel?.age() ?? {'year': 0, 'month': 0, 'day': 0};
+  //Maping the data
+  Map<String, int> get agedetails => _ageModel?.age()??{'year':0, 'month': 0, 'day':0};
 }
