@@ -42,7 +42,7 @@ class AgeProvider with ChangeNotifier {
 
   //function for Set the Date of birth
   void set_date_of_Birth(DateTime Dob) async {
-    _ageModel = AgeModel(date_of_Birth: Dob);
+    _ageModel = AgeModel(date_of_Birth: Dob,);
     await _hiveServices.Save_Age(_ageModel!);
     notifyListeners();
   }

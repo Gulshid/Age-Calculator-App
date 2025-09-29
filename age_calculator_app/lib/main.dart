@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(360, 690),
+      designSize: getDesignSize(context),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
@@ -53,4 +53,23 @@ class MyApp extends StatelessWidget {
       },
     );
   }
+
+
+
 }
+
+Size getDesignSize(BuildContext context) {
+  double width = MediaQuery.of(context).size.width;
+
+  if (width < 600) {
+    // Mobile
+    return const Size(360, 690);
+  } else if (width < 1200) {
+    // Tablet
+    return const Size(834, 1194); 
+  } else {
+    // Web / Desktop
+    return const Size(1440, 1024); 
+  }
+}
+
