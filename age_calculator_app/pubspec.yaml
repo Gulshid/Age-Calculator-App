@@ -43,7 +43,7 @@ dependencies:
   #loading Animation
   flutter_spinkit: ^5.2.1
   #google fonts
-  google_fonts: ^6.2.1
+  google_fonts: ^6.3.2
   #responsive UI
   flutter_screenutil: ^5.9.3
   #intl

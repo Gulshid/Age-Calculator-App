@@ -66,7 +66,7 @@ class _HomeViewState extends State<HomeView> {
       fontSize: 16.sp,
     ),
     hintStyle: GoogleFonts.agbalumo(
-      color: Colors.purple.withOpacity(0.5), // hint stays purple tint
+      color: Colors.purple.withValues(alpha: 0.5), // hint stays purple tint
     ),
     prefixIcon: Icon(Icons.cake, color: Colors.teal),
     focusedBorder: OutlineInputBorder(
